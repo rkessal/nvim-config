@@ -1,8 +1,37 @@
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.autoindent = true
-vim.opt.scrolloff = 10
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+local opt = vim.opt
+
+-- line numbers
+opt.relativenumber = true
+opt.number = true
+
+-- tabs & indentation
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
+
+-- line wrapping
+opt.wrap = false
+
+-- search settings
+opt.ignorecase = true
+opt.smartcase = true
+
+-- appearance
+opt.termguicolors = true
+opt.background = "dark"
+
+-- backspaces
+opt.backspace = "indent,eol,start"
+
+-- clipboard 
+opt.clipboard:append("unnamedplus")
+
+-- split windows
+opt.splitright = true
+opt.splitbelow = true
+
+opt.iskeyword:append("-")
+
+-- scroll
+opt.scrolloff = 15

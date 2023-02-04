@@ -1,48 +1,63 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
+	use("nvim-lua/plenary.nvim")
 
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
+	use("bluz71/vim-nightfly-guicolors")
+	use("christoomey/vim-tmux-navigator")
+	use("szw/vim-maximizer")
 
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
-  use('theprimeagen/harpoon')
-  use('mbbill/undotree')
-  use('tpope/vim-fugitive')
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {'williamboman/mason.nvim'},           -- Optional
-		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+	use("tpope/vim-surround")
+	use("vim-scripts/ReplaceWithRegister")
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},         -- Required
-		  {'hrsh7th/cmp-nvim-lsp'},     -- Required
-		  {'hrsh7th/cmp-buffer'},       -- Optional
-		  {'hrsh7th/cmp-path'},         -- Optional
-		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
+	use("numToStr/Comment.nvim")
+	use("nvim-tree/nvim-tree.lua")
 
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},             -- Required
-		  {'rafamadriz/friendly-snippets'}, -- Optional
-	  }
-  }
-  use {'manzeloth/live-server'}
-  use {'sbdchd/neoformat'}
-  use {'windwp/nvim-ts-autotag'}
+	use("kyazdani42/nvim-web-devicons")
+	use("nvim-lualine/lualine.nvim")
 
-  end)
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("rafamadriz/friendly-snippets")
+	use("sharkdp/fd")
+
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+
+	use("neovim/nvim-lspconfig")
+	use("hrsh7th/cmp-nvim-lsp")
+	use({ "glepnir/lspsaga.nvim", branch = "main" })
+	use("jose-elias-alvarez/typescript.nvim")
+	use("onsails/lspkind.nvim")
+
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("jayp0521/mason-null-ls.nvim")
+
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+			ts_update()
+		end,
+	})
+
+	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+
+	use("lewis6991/gitsigns.nvim")
+	use("mbbill/undotree")
+
+	use({ "manzeloth/live-server" })
+end)
