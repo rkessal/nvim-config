@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+vim.keymap.set("n", "<leader>s", ":w<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
+
 vim.keymap.set("n", "<leader>+", "<C-a>")
 vim.keymap.set("n", "<leader>-", "<C-x>")
 
@@ -19,9 +22,6 @@ vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
 
 vim.keymap.set("n", "<C-n>", ":bn<CR>")
 vim.keymap.set("n", "<C-p>", ":bp<CR>")
-
-vim.keymap.set("n", "<leader>s", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
 
 -- vim-maximizer
 vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
