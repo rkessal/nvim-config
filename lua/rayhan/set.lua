@@ -19,19 +19,17 @@ opt.smartcase = true
 
 -- appearance
 opt.termguicolors = true
-opt.background = "dark"
+opt.guicursor = "i:block"
 
 -- backspaces
 opt.backspace = "indent,eol,start"
 
--- clipboard 
+-- clipboard
 opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitright = true
 opt.splitbelow = true
-
-opt.iskeyword:append("-")
 
 -- scroll
 opt.scrolloff = 15
