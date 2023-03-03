@@ -27,7 +27,7 @@ vim.keymap.set("n", "<C-p>", ":bp<CR>")
 vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
 
 --nvim-tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
 
 -- telescope
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
