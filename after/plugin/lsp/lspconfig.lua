@@ -63,10 +63,25 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+local project_library_path = "/usr/local/lib/node_modules"
+local cmd = {
+	"node",
+	"/usr/local/lib/node_modules/@angular/language-server",
+	"--stdio",
+	"--tsProbeLocations",
+	project_library_path,
+	"--ngProbeLocations",
+	project_library_path,
+}
+
 -- configure angular server
 lspconfig["angularls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	cmd = cmd,
+	on_new_config = function(new_config, new_root_dir)
+		new_config.cmd = cmd
+	end,
 })
 
 -- configure html server

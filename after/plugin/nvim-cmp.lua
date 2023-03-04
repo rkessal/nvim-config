@@ -32,7 +32,6 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(), -- close completion window
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
-
 	-- sources for autocompletion
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp
@@ -40,7 +39,6 @@ cmp.setup({
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
 	}),
-
 	-- configure lspkind for vs-code like icons
 	formatting = {
 		format = lspkind.cmp_format({

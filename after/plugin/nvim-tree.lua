@@ -7,8 +7,10 @@ vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
-
 nvimtree.setup({
+	diagnostics = {
+		enable = true,
+	},
 	renderer = {
 		icons = {
 			glyphs = {
