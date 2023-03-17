@@ -3,6 +3,7 @@ if not status then
 	return
 end
 
+-- windows
 require("nvim-treesitter.install").compilers = { "zig" }
 
 -- configure treesitter

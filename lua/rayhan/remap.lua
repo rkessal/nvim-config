@@ -23,6 +23,9 @@ vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
 vim.keymap.set("n", "<C-n>", ":bn<CR>")
 vim.keymap.set("n", "<C-p>", ":bp<CR>")
 
+-- vim-maximizer
+vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<leader>p", '"_dP')

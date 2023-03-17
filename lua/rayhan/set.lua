@@ -36,3 +36,4 @@ opt.scrolloff = 15
 
 opt.swapfile = false
 opt.backup = false
+opt.undofile = true

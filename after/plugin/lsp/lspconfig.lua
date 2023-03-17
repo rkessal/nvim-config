@@ -62,9 +62,12 @@ for type, icon in pairs(signs) do
 end
 
 local project_library_path = "C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules"
+-- local project_library_path = "/usr/local/lib/node_modules"
 local cmd = {
 	"node",
 	"C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules/@angular/language-server",
+	-- mac
+	-- "/usr/local/lib/node_modules/@angular/language-server",
 	"--stdio",
 	"--tsProbeLocations",
 	project_library_path,
@@ -127,8 +130,7 @@ lspconfig["emmet_ls"].setup({
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = {
-		-- custom settings for lua
+	settings = { -- custom settings for lua
 		Lua = {
 			-- make the language server recognize "vim" global
 			diagnostics = {
