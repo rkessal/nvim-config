@@ -13,6 +13,7 @@ return require("packer").startup(function(use)
 	use("szw/vim-maximizer")
 
 	use("tpope/vim-surround")
+	use("tpope/vim-fugitive")
 	use("vim-scripts/ReplaceWithRegister")
 
 	use("numToStr/Comment.nvim")

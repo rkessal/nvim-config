@@ -10,6 +10,7 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 nvimtree.setup({
 	diagnostics = {
 		enable = true,
+		show_on_dirs = true,
 	},
 	renderer = {
 		icons = {
@@ -31,9 +32,11 @@ nvimtree.setup({
 			},
 		},
 	},
+
 	git = {
+		show_on_dirs = true,
 		enable = true,
-		ignore = false,
-		timeout = 500,
+		ignore = true,
+		timeout = 1000,
 	},
 })

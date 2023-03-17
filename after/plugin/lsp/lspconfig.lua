@@ -24,9 +24,8 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	-- set keybinds
 	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+	keymap.set("n", "gi", "<Cmd>Lspsaga goto_definition<CR>", opts) -- got to definition
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 	keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
@@ -37,8 +36,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- show documentation for what is under cursor
-	keymap.set("n", "<C-f>", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- show documentation for what is under cursor
-	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts) -- see outline on right hand side
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
 	if client.name == "tsserver" then
@@ -73,12 +71,14 @@ local cmd = {
 	"--ngProbeLocations",
 	project_library_path,
 }
+local util = require("lspconfig.util")
 
 -- configure angular server
 lspconfig["angularls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	cmd = cmd,
+	root_dir = util.root_pattern("angular.json", "project.json"),
 	on_new_config = function(new_config, new_root_dir)
 		new_config.cmd = cmd
 	end,
@@ -127,7 +127,8 @@ lspconfig["emmet_ls"].setup({
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = { -- custom settings for lua
+	settings = {
+		-- custom settings for lua
 		Lua = {
 			-- make the language server recognize "vim" global
 			diagnostics = {
