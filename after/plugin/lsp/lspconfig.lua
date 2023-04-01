@@ -23,19 +23,18 @@ local on_attach = function(client, bufnr)
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	-- set keybinds
-	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	keymap.set("n", "gi", "<Cmd>Lspsaga goto_definition<CR>", opts) -- got to definition
+	keymap.set("n", "gf", vim.lsp.buf.references, opts) -- show definition, references
+	keymap.set("n", "gi", vim.lsp.buf.definition, opts) -- got to definition
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts) -- show documentation for what is under cursor
-	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
+	keymap.set("n", "gt", vim.lsp.buf.type_definition, opts) -- show documentation for what is under cursor
+	keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
+	keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 	keymap.set("n", "<leader>ter", "<cmd>Lspsaga term_toggle<CR>", opts) -- show diagnostics for cursor
 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-	keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts) -- see outline on right hand side
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
@@ -53,21 +52,13 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
-local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
-local project_library_path = "C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules"
--- local project_library_path = "/usr/local/lib/node_modules"
+-- local project_library_path = "C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules"
+local project_library_path = "/usr/local/lib/node_modules"
 local cmd = {
 	"node",
-	"C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules/@angular/language-server",
+	-- "C:/Users/RayhanKESSAL/AppData/Roaming/npm/node_modules/@angular/language-server",
 	-- mac
-	-- "/usr/local/lib/node_modules/@angular/language-server",
+	"/usr/local/lib/node_modules/@angular/language-server",
 	"--stdio",
 	"--tsProbeLocations",
 	project_library_path,
