@@ -49,3 +49,8 @@ vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>")
+
+-- fugitive
+vim.keymap.set("n", "g<cr>", "<cmd>:G<cr>")
+vim.keymap.set("n", "gp", ":G push --set-upstream origin ")
+vim.keymap.set("n", "gmt", "<cmd>:G mergetool<cr>")

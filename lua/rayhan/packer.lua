@@ -5,7 +5,10 @@ vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+	use({
+		"wbthomason/packer.nvim",
+		run = ":MasonUpdate",
+	})
 	use("nvim-lua/plenary.nvim")
 
 	use("bluz71/vim-nightfly-guicolors")

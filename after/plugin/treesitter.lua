@@ -4,7 +4,7 @@ if not status then
 end
 
 -- windows
-require("nvim-treesitter.install").compilers = { "zig" }
+-- require("nvim-treesitter.install").compilers = { "zig" }
 
 -- configure treesitter
 treesitter.setup({
@@ -21,6 +21,7 @@ treesitter.setup({
 		"json",
 		"javascript",
 		"typescript",
+		"java",
 		"tsx",
 		"yaml",
 		"html",
